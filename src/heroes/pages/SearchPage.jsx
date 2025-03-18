@@ -21,13 +21,14 @@ export const SearchPage = () => {
   const showSearch = (busqueda.length === 0);
   const showError = (busqueda.length > 0 && heroes.length === 0);
 
-  const {searchText, onInputChange} = useForm({
+  const { searchText, onInputChange } = useForm({
     searchText: busqueda
   });
 
   const onSearchSubmit = (e) => {
     e.preventDefault();
     // if (searchText.trim().length <= 1) return;
+    // console.log('desde testing');
 
     navigate(`?q=${searchText}`);
   }
@@ -44,9 +45,9 @@ export const SearchPage = () => {
           <h4>Searching</h4>
           <hr />
 
-          <form action="" onSubmit={onSearchSubmit}>
-            <input type="text" placeholder="Search a hero" className="form-control" name="searchText" 
-            autoComplete="off" value={searchText} onChange={onInputChange} />
+          <form action="" onSubmit={onSearchSubmit} aria-label="form">
+            <input type="text" placeholder="Search a hero" className="form-control" name="searchText"
+              autoComplete="off" value={searchText} onChange={onInputChange} />
             <button className="btn btn-outline-primary mt-1">Search</button>
           </form>
         </div>
@@ -62,9 +63,12 @@ export const SearchPage = () => {
             </div>)
           } */}
 
-          <div className="alert alert-primary animate__animated animate__fadeIn" style={{ display: showSearch ? '' : 'none' }}>Search a hero</div>
+          <div aria-label="searchHero" className="alert alert-primary animate__animated animate__fadeIn"
+            style={{ display: showSearch ? '' : 'none' }}>
+            Search a hero</div>
 
-          <div className="alert alert-danger animate__animated animate__fadeIn" style={{ display: showError ? '' : 'none' }}>
+          <div aria-label="errorHero" className="alert alert-danger animate__animated animate__fadeIn"
+            style={{ display: showError ? '' : 'none' }}>
             No hero with <b>{searchParams.get('q')}</b>
           </div>
 
@@ -74,7 +78,7 @@ export const SearchPage = () => {
             ))
           }
 
-          
+
         </div>
       </div>
 

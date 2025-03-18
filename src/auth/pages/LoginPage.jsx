@@ -15,9 +15,14 @@ export const LoginPage = () => {
       // console.log(localStorage.getItem('lastPath'));
 
       login('Marcelo Fuentes');
-      navigate(lastPath, {
+
+      setTimeout(() => {
+        navigate(lastPath, {
           replace: true
       });
+      }, 100);
+
+      
   }
   return (
     <div className="container mt-5">
